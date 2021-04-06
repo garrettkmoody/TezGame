@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TezGame</string>
+    <string name="welcome_to_tezgame">Welcome to TezGame!</string>
 </resources>

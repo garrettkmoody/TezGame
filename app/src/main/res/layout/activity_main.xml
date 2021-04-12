@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tvTezGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_to_tezgame"
@@ -19,5 +20,65 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:columnCount="2"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:padding="5sp"
+        android:rowCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTezGame">
+
+
+        <Button
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="Start" />
+
+        <Button
+            android:layout_row="1"
+            android:layout_column="0"
+            android:text="Menu" />
+
+        <Button
+            android:layout_row="2"
+            android:layout_column="0"
+            android:text="Settings" />
+
+
+    </GridLayout>
+
+    <ImageView
+
+        android:layout_width="124sp"
+        android:layout_height="129sp"
+        android:layout_marginTop="76dp"
+        android:src="@drawable/ghost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toEndOf="@+id/gridLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tvTezGame" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="4sp"
+        android:background="@drawable/username_background"
+        android:hint="Enter your name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

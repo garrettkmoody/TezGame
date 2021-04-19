@@ -21,25 +21,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05" />
 
+    <TextView
+        android:id="@+id/ghostNameTV"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/ghost"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.731"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTezGame" />
+
     <GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="20dp"
         android:columnCount="2"
         android:gravity="start"
         android:orientation="horizontal"
         android:padding="5sp"
         android:rowCount="3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTezGame">
 
 
         <Button
-            android:layout_row="0"
             android:id="@+id/startButton"
+            android:layout_row="0"
             android:layout_column="0"
             android:text="@string/start" />
 
@@ -58,12 +71,13 @@
 
     <ImageView
 
-        android:layout_width="124sp"
-        android:layout_height="129sp"
-        android:layout_marginTop="76dp"
+        android:id="@+id/imageView"
+        android:layout_width="231dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/ghost"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toEndOf="@+id/gridLayout"
         app:layout_constraintTop_toBottomOf="@+id/tvTezGame" />
 
@@ -71,14 +85,14 @@
         android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/username_background"
         android:ems="10"
+        android:hint="@string/enter_your_name"
         android:inputType="textPersonName"
         android:padding="4sp"
-        android:background="@drawable/username_background"
-        android:hint="@string/enter_your_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.26"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
@@ -87,23 +101,10 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
-
-    <TextView
-        android:id="@+id/ghostNameTV"
-        android:layout_width="200sp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/ghost"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.971"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTezGame" />
+        app:layout_constraintHorizontal_bias="0.262"
+        app:layout_constraintStart_toEndOf="@+id/etUsername"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

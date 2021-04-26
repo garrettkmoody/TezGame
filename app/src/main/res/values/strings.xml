@@ -8,4 +8,7 @@
     <string name="ghost">Ghost:</string>
     <string name="lose_game">Lose Game</string>
     <string name="win_game">Win Game</string>
+    <string name="white_ghost">White Ghost</string>
+    <string name="red_ghost">Red Ghost</string>
+    <string name="blue_ghost">Blue Ghost</string>
 </resources>

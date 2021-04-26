@@ -57,7 +57,7 @@
     </GridLayout>
 
     <ImageView
-
+        android:id="@+id/ghostPic"
         android:layout_width="124sp"
         android:layout_height="129sp"
         android:layout_marginTop="76dp"

@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_one"
+        android:title="@string/white_ghost"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_two"
+        android:title="@string/red_ghost"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_three"
+        android:title="@string/blue_ghost"
+        app:showAsAction="never"/>
+
+</menu>

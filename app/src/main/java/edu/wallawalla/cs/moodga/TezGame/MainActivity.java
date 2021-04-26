@@ -2,6 +2,7 @@ package edu.wallawalla.cs.moodga.TezGame;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,10 +20,27 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DifficultyFragment.OnDifficultySelectedListener {
 
     private final int REQUEST_GAME_RESULT = 0;
     private ImageView ghostIV;
+
+    @Override
+    public void onDifficultyClick(int which) {
+        switch(which) {
+            case 0:
+                Toast.makeText(this, "Easy Mode!", Toast.LENGTH_SHORT).show();
+                break;
+            case 1:
+                Toast.makeText(this, "Medium Mode!", Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                Toast.makeText(this, "Hard Mode!", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        // Handle difficulty logic
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (item.getItemId() == R.id.action_three) {
             ghostIV.setColorFilter(Color.argb(100, 0, 0, 255));
+            return true;
+        } else if (item.getItemId() == R.id.action_difficulty) {
+            FragmentManager manager = getSupportFragmentManager();
+            DifficultyFragment dialog = new DifficultyFragment();
+            dialog.show(manager, "difficultyDialog");
             return true;
         }
 

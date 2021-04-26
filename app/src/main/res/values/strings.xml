@@ -11,4 +11,11 @@
     <string name="white_ghost">White Ghost</string>
     <string name="red_ghost">Red Ghost</string>
     <string name="blue_ghost">Blue Ghost</string>
+    <string name="difficulty">Difficulty</string>
+
+    <string-array name="difficulties">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
 </resources>

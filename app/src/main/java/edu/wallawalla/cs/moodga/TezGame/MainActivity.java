@@ -2,7 +2,9 @@ package edu.wallawalla.cs.moodga.TezGame;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
 
     private final int REQUEST_GAME_RESULT = 0;
     private ImageView ghostIV;
+    boolean status = false;
 
     @Override
     public void onDifficultyClick(int which) {
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button startButton = findViewById(R.id.startButton);
+        Button hunterBT = findViewById(R.id.hunterbt);
+        Button scavengerBT = findViewById(R.id.scavengerbt);
+        Button assassinBT = findViewById(R.id.assassinbt);
         ghostIV = findViewById(R.id.ghostPic);
         EditText enternameET = findViewById(R.id.etUsername);
         TextView ghostnameTV = findViewById(R.id.ghostNameTV);
@@ -54,6 +60,64 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
             Intent intent = new Intent(this, GameActivity.class);
             startActivityForResult(intent, REQUEST_GAME_RESULT);
         });
+
+        hunterBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
+                if(fragment != null) {
+                    FragmentTransaction trans = fragmentManager.beginTransaction();
+                    trans.remove(fragment);
+                    trans.commit();
+                }
+                fragment = new GhostInfoFragment();
+                Bundle args = new Bundle();
+                args.putInt("classType", 1);
+                fragment.setArguments(args);
+                fragmentManager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
+            }
+        });
+
+        scavengerBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
+                if(fragment != null) {
+                    FragmentTransaction trans = fragmentManager.beginTransaction();
+                    trans.remove(fragment);
+                    trans.commit();
+                }
+                fragment = new GhostInfoFragment();
+                Bundle args = new Bundle();
+                args.putInt("classType", 2);
+                fragment.setArguments(args);
+                fragmentManager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
+            }
+        });
+
+        assassinBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
+                if(fragment != null) {
+                    FragmentTransaction trans = fragmentManager.beginTransaction();
+                    trans.remove(fragment);
+                    trans.commit();
+                }
+
+                fragment = new GhostInfoFragment();
+                Bundle args = new Bundle();
+                args.putInt("classType", 3);
+                fragment.setArguments(args);
+                fragmentManager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
+
+            }
+        });
+
+
 
         enternameET.addTextChangedListener(new TextWatcher() {
             @Override

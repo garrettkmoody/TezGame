@@ -12,10 +12,15 @@
     <string name="red_ghost">Red Ghost</string>
     <string name="blue_ghost">Blue Ghost</string>
     <string name="difficulty">Difficulty</string>
+    <string name="scavenger">Scavenger</string>
+    <string name="assassin">Assassin</string>
+    <string name="hunter">Hunter</string>
 
     <string-array name="difficulties">
         <item>Easy</item>
         <item>Medium</item>
         <item>Hard</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

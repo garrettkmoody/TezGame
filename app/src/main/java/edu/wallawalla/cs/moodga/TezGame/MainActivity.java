@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -27,17 +29,25 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
     private final int REQUEST_GAME_RESULT = 0;
     private ImageView ghostIV;
     boolean status = false;
+    SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = sharedPref.edit();
 
     @Override
     public void onDifficultyClick(int which) {
         switch(which) {
             case 0:
+                editor.putInt("Difficulty", 0);
+                editor.apply();
                 Toast.makeText(this, "Easy Mode!", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
+                editor.putInt("Difficulty", 1);
+                editor.apply();
                 Toast.makeText(this, "Medium Mode!", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
+                editor.putInt("Difficulty", 2);
+                editor.apply();
                 Toast.makeText(this, "Hard Mode!", Toast.LENGTH_SHORT).show();
                 break;
         }

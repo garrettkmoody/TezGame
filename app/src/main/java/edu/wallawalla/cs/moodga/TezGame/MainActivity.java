@@ -17,6 +17,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,12 +29,16 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
 
     private final int REQUEST_GAME_RESULT = 0;
     private ImageView ghostIV;
+    private Integer colorType = 0;
+    private Integer classType = 0;
     boolean status = false;
-    SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-    SharedPreferences.Editor editor = sharedPref.edit();
+    private Animation standardAnim;
+
 
     @Override
     public void onDifficultyClick(int which) {
+        SharedPreferences sharedPref = getPreferences(getApplicationContext().MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
         switch(which) {
             case 0:
                 editor.putInt("Difficulty", 0);
@@ -66,14 +71,20 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
         ghostIV = findViewById(R.id.ghostPic);
         EditText enternameET = findViewById(R.id.etUsername);
         TextView ghostnameTV = findViewById(R.id.ghostNameTV);
+
+
+
         startButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, GameActivity.class);
-            startActivityForResult(intent, REQUEST_GAME_RESULT);
+            intent.putExtra("classtype", classType);
+            intent.putExtra("colortype", colorType);
+            startActivity(intent);
         });
 
         hunterBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                classType = 1;
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
                 if(fragment != null) {
@@ -92,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
         scavengerBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                classType = 2;
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
                 if(fragment != null) {
@@ -110,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
         assassinBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                classType = 3;
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
                 if(fragment != null) {
@@ -161,14 +174,17 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
         // Determine which menu option was chosen
         if (item.getItemId() == R.id.action_one) {
             ghostIV.setColorFilter(Color.argb(100, 255, 255, 255));
+            colorType = 1;
             return true;
         }
         else if (item.getItemId() == R.id.action_two) {
             ghostIV.setColorFilter(Color.argb(100, 255, 0, 0));
+            colorType = 2;
             return true;
         }
         else if (item.getItemId() == R.id.action_three) {
             ghostIV.setColorFilter(Color.argb(100, 0, 0, 255));
+            colorType = 3;
             return true;
         } else if (item.getItemId() == R.id.action_difficulty) {
             FragmentManager manager = getSupportFragmentManager();

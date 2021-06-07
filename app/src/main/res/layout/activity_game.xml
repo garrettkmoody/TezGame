@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/gamePage"
     android:layout_height="match_parent"
     android:background="@drawable/floor"
     tools:context=".GameActivity">
 
     <ImageView
-        android:id="@+id/person3"
+        android:id="@+id/person2"
         android:layout_width="157dp"
         android:layout_height="143dp"
         android:layout_marginTop="52dp"
@@ -24,13 +25,13 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
-        app:layout_constraintEnd_toStartOf="@+id/person2"
+        app:layout_constraintEnd_toStartOf="@+id/person3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/person3"
+        app:layout_constraintTop_toBottomOf="@+id/person2"
         app:srcCompat="@drawable/guy" />
 
     <ImageView
-        android:id="@+id/person2"
+        android:id="@+id/person3"
         android:layout_width="157dp"
         android:layout_height="143dp"
         android:layout_marginEnd="16dp"
@@ -77,7 +78,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/person3" />
+        app:layout_constraintTop_toBottomOf="@+id/person2" />
 
     <TextView
         android:id="@+id/tvGuy"
@@ -107,7 +108,7 @@
         android:text="Points: ?"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/person2" />
+        app:layout_constraintTop_toBottomOf="@+id/person3" />
 
     <Button
         android:id="@+id/btStart"

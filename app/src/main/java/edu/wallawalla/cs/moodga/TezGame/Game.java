@@ -5,18 +5,22 @@ import android.media.Image;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Random;
 
 import org.w3c.dom.Text;
 
 public class Game {
 
+    public boolean percent1, percent2, percent3;
     public Integer score = 0;
+    public double d;
     public Integer point1 = 0, point2 = 0, point3 = 0;
     public Integer abilityUses = 0;
     public Integer ghostType = 1;
     public Integer ghostColor = 0;
-    public Integer day = 0;
+    public Integer day = 1;
     private Button ability;
     private ImageView ghost;
     private TextView guy, guy1, girl;
@@ -73,6 +77,28 @@ public class Game {
         guy1.setText("Points: " + point2);
         girl.setText("Points: " + point3);
 
+        d = Math.random();
+        runNumbers();
+    }
+
+    public void runNumbers() {
+        if(d < .25) {
+            percent1 = true;
+            percent2 = true;
+            percent3 = true;
+        } else if(d < .50) {
+            percent3 = false;
+            percent1 = true;
+            percent2 = true;
+        } else if(d < .75) {
+            percent1 = true;
+            percent2 = false;
+            percent3 = false;
+        } else {
+            percent1 = false;
+            percent2 = false;
+            percent3 = false;
+        }
     }
 
 

@@ -65,13 +65,13 @@ public class GhostInfoFragment extends Fragment {
         TextView ghostinfoTV = view.findViewById(R.id.ghostinfoTV);
         switch(mParam1) {
             case 1:
-                ghostinfoTV.setText("This Ghost is fast and deals extra damage to enemies.");
+                ghostinfoTV.setText("This Ghost has the ability to read one person's mind and predict if they will choose them as a friend. This ability can be used 4 times.");
                 break;
             case 2:
-                ghostinfoTV.setText("This Ghost is slow but has a lot of health. Enemies tend to ignore this ghost more.");
+                ghostinfoTV.setText("This Ghost has the ability to charm one person forcing them to become friends. This ability can be used once.");
                 break;
             case 3:
-                ghostinfoTV.setText("This Ghost does not have much health but can be invisible. This Ghost deals short, quick bursts of damage.");
+                ghostinfoTV.setText("This Ghost can bribe friendship, giving the Ghost a 20 percent greater chance of friendship. This ability can be used 5 times.");
                 break;
         }
         return view;

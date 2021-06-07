@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -25,12 +26,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.BreakIterator;
+
 public class MainActivity extends AppCompatActivity implements DifficultyFragment.OnDifficultySelectedListener {
 
     private final int REQUEST_GAME_RESULT = 0;
     private ImageView ghostIV;
     private Integer colorType = 0;
     private Integer classType = 0;
+    public Integer defaultVal = 0;
     boolean status = false;
     private Animation standardAnim;
 
@@ -71,14 +75,15 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
         ghostIV = findViewById(R.id.ghostPic);
         EditText enternameET = findViewById(R.id.etUsername);
         TextView ghostnameTV = findViewById(R.id.ghostNameTV);
-
-
-
+        TextView highscoreTV = findViewById(R.id.highTV);
+        int highScore = getDefaults("highscore", this);
+        highscoreTV.setText(""+highScore);
         startButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, GameActivity.class);
             intent.putExtra("classtype", classType);
             intent.putExtra("colortype", colorType);
-            startActivity(intent);
+            intent.putExtra("highscore", highScore);
+            startActivityForResult(intent, REQUEST_GAME_RESULT);
         });
 
         hunterBT.setOnClickListener(new View.OnClickListener() {
@@ -199,6 +204,9 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        int highScore = getDefaults("highscore", this);
+        TextView highscoreTV = findViewById(R.id.highTV);
+        highscoreTV.setText(""+highScore);
         if (resultCode == RESULT_OK && requestCode == REQUEST_GAME_RESULT) {
             Boolean test = false;
             Boolean winOrLoss = data.getBooleanExtra(GameActivity.WIN_OR_LOSE, test);
@@ -208,5 +216,18 @@ public class MainActivity extends AppCompatActivity implements DifficultyFragmen
                 Toast.makeText(this, "You lost the game :(", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public static Integer getDefaults(String key, Context context) {
+        Integer defaultVal = 0;
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getInt(key, defaultVal);
+    }
+
+    public static void setDefaults(String key, Integer value, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(key, value);
+        editor.commit();
     }
 }
